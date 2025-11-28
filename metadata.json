@@ -1,0 +1,4 @@
+{
+  "name": "CSPRNG-RSA Signer",
+  "description": "A secure, web-based digital signature platform integrating CSPRNG for RSA key generation and document signing verification."
+}
