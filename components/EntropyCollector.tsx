@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { generateRandomBytes } from '../services/csprngService';
+import { generateRandomBytes, addEntropy } from '../services/csprngService';
 import { LineChart, Line, ResponsiveContainer, YAxis } from 'recharts';
 import { EntropyData } from '../types';
 
@@ -17,10 +17,10 @@ const EntropyCollector: React.FC<Props> = ({ onComplete, isComplete }) => {
     if (isComplete) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      // In a real heavy crypto app, we would push these coordinates into a seed pool.
-      // Here we simulate the accumulation of "randomness" required to initialize the system.
-      // However, we DO use real CSPRNG to generate values for the visualizer.
-      
+      // Feed mouse coordinates and timestamp into our entropy pool
+      addEntropy(e.clientX, e.clientY, e.timeStamp % 1000);
+
+      // The chart visualization can still use its own random data for display purposes.
       const randomByte = generateRandomBytes(1)[0];
       
       setChartData(prev => {
