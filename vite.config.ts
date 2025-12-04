@@ -8,7 +8,9 @@ export default defineConfig(({ mode }) => {
   return {
     // This is the crucial line for GitHub Pages
     base: '/CSPRNG/',
-    plugins: [react()],
+    plugins: [react({
+      jsxRuntime: 'classic'
+    })],
     server: {
       port: 3000,
       host: '0.0.0.0',
