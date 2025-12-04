@@ -7,14 +7,11 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
     // This is the crucial line for GitHub Pages
-    base: '/digital_signature/',
+    base: '/CSPRNG/',
     plugins: [react()],
     server: {
       port: 3000,
       host: '0.0.0.0',
-      hmr: {
-        clientPort: 443,
-      },
     },
   };
 });
